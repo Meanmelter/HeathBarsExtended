@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+    <announcement icon="MyLogo" text="MeanmelterHealthBars by Meanmelter"/>
+    <properties>
+        <name>MeanmelterHealthBars</name>
+        <author>Meanmelter</author>
+        <version>0.1</version>
+        <description>Integrates custom health bars to Fantasy Grounds Unity </description>
+        <loadorder>20</loadorder>
+        <ruleset><name>SFRPG</name></ruleset>
+        <ruleset><name>5E</name></ruleset>
+    </properties>
+    <base>
+        <includefile source="XML/Graphics.xml"/>
+        <includefile source="XML/Scripts.xml" />
+        <includefile source="XML/Strings.xml" />
+    </base>
+</root>
