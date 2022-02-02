@@ -1,9 +1,21 @@
- 
 function onInit()
-    TokenManager.updateHealthHelper = updateHealthHelper;
+    TokenManager.addDefaultHealthFeatures = AddDefaultHealthFeatures;
+    OriginalUpdateHealthHelpter = TokenManager.updateHealthHelper;
+    TokenManager.updateHealthHelper = UpdateHealthHelper;
 end
-
-function updateHealthHelper(tokenCT, nodeCT)
+-- function AddDefaultHealthFeatures(f, aHealthFields)
+-- 	if not f then
+-- 		return;
+-- 	end
+-- 	bDisplayDefaultHealth = true;
+-- 	fGetHealthInfo = f;
+-- 	TokenManager.registerWidgetSet("health", {"healthbar", "healthdot"});
+--
+-- 	for _,sField in ipairs(aHealthFields) do
+-- 		CombatManager.addCombatantFieldChangeHandler(sField, "onUpdate", updateHealth);
+-- 	end
+-- end
+function UpdateHealthHelper(tokenCT, nodeCT)
 	local sOptTH;
 	if Session.IsHost then
 		sOptTH = OptionsManager.getOption("TGMH");
@@ -19,7 +31,7 @@ function updateHealthHelper(tokenCT, nodeCT)
 			vWidget.destroy();
 		end
 	else
-		local nPercentWounded,sStatus,sColor = fGetHealthInfo(nodeCT);
+		local nPercentWounded,sStatus,sColor = TokenManager2.getHealthInfo(nodeCT);
 
 		if sOptTH == "bar" or sOptTH == "barhover" then
 			local w, h = tokenCT.getSize();
